@@ -19,7 +19,7 @@
           class="hidden lg:flex flex space-x-[59px] items-center font-normal text-lg text-[#666666]"
         >
           <p class="cursor-pointer" :onclick="() => navigateTo('app')">Home</p>
-          <p class="cursor-pointer">About</p>
+          <p class="cursor-pointer" :onclick="() => navigateTo('about')">About</p>
           <p class="cursor-pointer" :onclick="() => navigateTo('myTechStack')">Tech Stack</p>
           <p class="cursor-pointer" :onclick="() => navigateTo('myProjects')">Projects</p>
           <p class="cursor-pointer" :onclick="() => navigateTo('contact')">Contact</p>
@@ -49,10 +49,19 @@
 export default {
   name: 'Footer',
   methods: {
-    navigateTo(id) {
-      document.getElementById(id).scrollIntoView({
-        behavior: 'smooth',
-      })
+    async navigateTo(id) {
+      if (id === 'about') {
+        if (!window.location.href.includes('about')) {
+          this.$router.push('/about')
+        }
+      } else {
+        if (window.location.href.includes('about')) {
+          await this.$router.push('/')
+        }
+        document.getElementById(id).scrollIntoView({
+          behavior: 'smooth',
+        })
+      }
     },
   },
 }
