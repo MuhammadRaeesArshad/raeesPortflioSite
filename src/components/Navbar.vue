@@ -26,6 +26,7 @@ export default {
     async navigateTo(id) {
       if (id === 'about') {
         if (!window.location.href.includes('about')) {
+          window.scrollTo(0, 0)
           this.$router.push('/about')
         }
       } else {
