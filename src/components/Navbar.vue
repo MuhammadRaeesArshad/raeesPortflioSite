@@ -3,7 +3,9 @@
     <div class="mx-5 lg:mx-[72px] mt-[30px] flex justify-between my-[35px] max-w-[1296px] w-full">
       <h1 class="font-bold text-[32px] text-[#42446E]">MRA</h1>
       <div class="flex">
-        <div class="flex space-x-[59px] items-center font-medium text-lg text-[#666666]">
+        <div
+          class="hidden lg:flex flex space-x-[59px] items-center font-medium text-lg text-[#666666]"
+        >
           <p>Home</p>
           <p>About</p>
           <p>Tech Stack</p>
