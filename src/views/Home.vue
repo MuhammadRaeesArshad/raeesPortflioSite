@@ -11,7 +11,7 @@
           >
             Muhammad Raees
           </p>
-          <p class="">I build things for humans</p>
+          <p class="">Full Stack Developer</p>
         </div>
         <img class="hidden md:block" src="../assets/TitlePageImage.svg" />
       </div>
@@ -47,7 +47,7 @@
               <div class="h-[260px] bg-[#313131] flex items-center justify-center rounded-t-3xl">
                 <img src="../assets/ezWifiBlackAndWhiteLogo.svg" />
               </div>
-              <div class="text-left mx-[30px] mt-[27px]">
+              <div class="mx-[30px] text-left mt-[27px]">
                 <p class="font-medium text-[28px] text-black mt-[27px]">{{ project.title }}</p>
                 <p class="font-light text-lg text-[#666666] mt-[17px]">
                   {{ project.description }}
@@ -55,6 +55,33 @@
                 <p class="font-light text-sm text-[#42446E] mt-[12px]">
                   <span class="font-normal text-base">Tech stack :</span>{{ project.techStack }}
                 </p>
+              </div>
+              <div v-if="project.previewLink || project.codeLink" class="mx-[30px] mt-[21px] flex">
+                <div
+                  v-if="project.previewLink"
+                  :onclick="
+                    () => {
+                      openLink(project.previewLink)
+                    }
+                  "
+                  class="flex cursor-pointer"
+                >
+                  <img src="../assets/linkChain.svg" />
+                  <p class="ml-[10px] text-black font-normal text-base underline">Live Preview</p>
+                </div>
+                <div
+                  v-if="project.codeLink"
+                  :onclick="
+                    () => {
+                      openLink(project.codeLink)
+                    }
+                  "
+                  :class="project.previewLink ? 'ml-[48px]' : ''"
+                  class="flex cursor-pointer"
+                >
+                  <img src="../assets/viewCodeIcon.svg" />
+                  <p class="ml-[10px] text-black font-normal text-base underline">View Code</p>
+                </div>
               </div>
             </div>
           </div>
@@ -70,44 +97,48 @@ export default {
     return {
       projects: [
         {
+          title: 'ezWiFi Landing Page',
+          description: 'Crafted a dynamic, fully responsive and user-friendly landing page',
+          techStack: ' VueJS, Tailwind',
+          previewLink: 'https://ez-initiis-novis.vercel.app/',
+        },
+        {
           title: 'ezWiFi Mobile App',
-          description:
-            'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
-          techStack: ' HTML , JavaScript, SASS, React',
+          description: `Developed a mobile Dapp using Flutter with features including on-boarding routers, performance dashboard, hotspot map and wallet page`,
+          techStack: ' Flutter, NodeJS, NestJS, Solidity',
         },
         {
-          title: 'ezWiFi Mobile App2',
-          description:
-            'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
-          techStack: ' HTML , JavaScript, SASS, React',
+          title: 'ezWiFi Dashboard',
+          description: `Developed a scalable and optimized dashboard  with
+features including graphically represented customer data, location and hotspots manager, portal page
+manager, account management system and ads manager system`,
+          techStack: ' NestJS, VueJS, Stripe, AWS',
         },
         {
-          title: 'ezWiFi Mobile App3',
-          description:
-            'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
-          techStack: ' HTML , JavaScript, SASS, React',
+          title: 'Tourism Webapp',
+          description: `Crafted a user interactive web app to allow users to view tours and book/manage their tours and accounts`,
+          techStack: ' Pug, NodeJS, ExpressJS',
+          codeLink: 'https://github.com/MuhammadRaeesArshad/Natours---Tourism-webapp',
         },
         {
-          title: 'ezWiFi Mobile App4',
-          description:
-            'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
-          techStack: ' HTML , JavaScript, SASS, React',
+          title: 'Brans4Cheap Admin Dashboard',
+          description: 'Developed a scalable and optimized dashboard for client for his website',
+          techStack: ' NodeJS, ExpressJS, ReactJS',
+          previewLink: 'https://brands4cheap.com',
         },
-        {
-          title: 'ezWiFi Mobile App5',
-          description:
-            'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
-          techStack: ' HTML , JavaScript, SASS, React',
-        },
-        {
-          title: 'ezWiFi Mobile App6',
-          description:
-            'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
-          techStack: ' HTML , JavaScript, SASS, React',
-        },
+        // {
+        //   title: 'ezWiFi Mobile App6',
+        //   description:
+        //     'This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content',
+        //   techStack: ' HTML , JavaScript, SASS, React',
+        // },
       ],
     }
   },
-  methods: {},
+  methods: {
+    openLink(link) {
+      window.open(link)
+    },
+  },
 }
 </script>
