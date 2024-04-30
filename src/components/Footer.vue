@@ -18,7 +18,7 @@
         <div
           class="hidden lg:flex flex space-x-[59px] items-center font-normal text-lg text-[#666666]"
         >
-          <p class="cursor-pointer" :onclick="() => navigateTo('home')">Home</p>
+          <p class="cursor-pointer" :onclick="() => navigateTo('app')">Home</p>
           <p class="cursor-pointer">About</p>
           <p class="cursor-pointer" :onclick="() => navigateTo('myTechStack')">Tech Stack</p>
           <p class="cursor-pointer" :onclick="() => navigateTo('myProjects')">Projects</p>
