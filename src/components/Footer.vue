@@ -1,7 +1,7 @@
 <template lang="">
   <!-- NavBar -->
   <div class="mx-5 lg:mx-[72px] flex justify-center items-center">
-    <div class="max-w-[1296px] w-full">
+    <div id="contact" class="max-w-[1296px] w-full">
       <div class="flex justify-between items-center">
         <p class="bg-[666666aa] font-bold text-[#42446E] text-[32px]">MRA</p>
         <div class="flex">
@@ -18,11 +18,11 @@
         <div
           class="hidden lg:flex flex space-x-[59px] items-center font-normal text-lg text-[#666666]"
         >
-          <p>Home</p>
-          <p>About</p>
-          <p>Tech Stack</p>
-          <p>Projects</p>
-          <p>Contact</p>
+          <p class="cursor-pointer" :onclick="() => navigateTo('home')">Home</p>
+          <p class="cursor-pointer">About</p>
+          <p class="cursor-pointer" :onclick="() => navigateTo('myTechStack')">Tech Stack</p>
+          <p class="cursor-pointer" :onclick="() => navigateTo('myProjects')">Projects</p>
+          <p class="cursor-pointer" :onclick="() => navigateTo('contact')">Contact</p>
         </div>
         <p class="text-lg font-normal text-[#666666]">
           Designed and built by
@@ -45,10 +45,16 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script>
 export default {
   name: 'Footer',
-  methods: {},
+  methods: {
+    navigateTo(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: 'smooth',
+      })
+    },
+  },
 }
 </script>
 <style lang=""></style>
