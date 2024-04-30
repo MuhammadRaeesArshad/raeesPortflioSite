@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full mx-5 lg:mx-[72px] flex flex-col items-start lg:items-center">
+  <div class="w-full px-5 lg:px-[72px]">
     <!-- Title Screen -->
-    <div class="mt-[165px] w-full h-full flex justify-between">
-      <div class="bg-[666666aa] font-bold text-[#42446E] text-[58px]">
+    <div class="mt-[165px] flex justify-between w-full">
+      <div class="bg-[666666aa] font-bold text-[#42446E] text-[58px] w-fit">
         <p>Hi 👋,</p>
         <p>My name is</p>
         <p
@@ -19,6 +19,19 @@
       <div id="myTechStack" class="font-bold text-[48px] text-[#42446E]">My Tech Stack</div>
       <div class="mt-[49px] text-[32px] font-normal text-[#666666]">
         Technologies I’ve been working with recently
+      </div>
+      <div class="mt-[146px] grid grid-rows-2 grid-flow-col">
+        <img src="../assets/JS.svg" />
+        <img src="../assets/html5.svg" />
+        <img src="../assets/React.svg" />
+        <img src="../assets/CSS.svg" />
+        <img src="../assets/tailwind.svg" />
+        <img src="../assets/CSS.svg" />
+        <img src="../assets/CSS.svg" />
+        <img src="../assets/CSS.svg" />
+        <img src="../assets/CSS.svg" />
+        <img src="../assets/CSS.svg" />
+        <img src="../assets/CSS.svg" />
       </div>
     </div>
   </div>
