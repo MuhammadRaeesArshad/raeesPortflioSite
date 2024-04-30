@@ -115,17 +115,18 @@ manager, account management system and ads manager system`,
           techStack: ' NestJS, VueJS, Stripe, AWS',
         },
         {
-          title: 'Tourism Webapp',
-          description: `Crafted a user interactive web app to allow users to view tours and book/manage their tours and accounts`,
-          techStack: ' Pug, NodeJS, ExpressJS',
-          codeLink: 'https://github.com/MuhammadRaeesArshad/Natours---Tourism-webapp',
-        },
-        {
           title: 'Brans4Cheap Admin Dashboard',
           description: 'Developed a scalable and optimized dashboard for client for his website',
           techStack: ' NodeJS, ExpressJS, ReactJS',
           previewLink: 'https://brands4cheap.com',
         },
+        {
+          title: 'Tourism Webapp',
+          description: `Crafted a user interactive web app to allow users to view tours and book/manage their tours and accounts`,
+          techStack: ' Pug, NodeJS, ExpressJS',
+          codeLink: 'https://github.com/MuhammadRaeesArshad/Natours---Tourism-webapp',
+        },
+
         // {
         //   title: 'ezWiFi Mobile App6',
         //   description:
