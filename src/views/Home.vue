@@ -36,7 +36,7 @@
         </div>
       </div>
       <!-- Projects -->
-      <div class="mt-[192px] text-center w-full">
+      <div class="mt-[192px] mb-[225px] text-center w-full">
         <div id="myProjects" class="font-bold text-[48px] text-[#42446E]">Projects</div>
         <div class="mt-[49px] text-[32px] font-normal text-[#666666]">Things I’ve built so far</div>
 
