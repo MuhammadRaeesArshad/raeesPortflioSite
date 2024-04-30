@@ -32,7 +32,10 @@ export default {
         if (window.location.href.includes('about')) {
           await this.$router.push('/')
         }
-        document.getElementById(id).scrollIntoView({
+        const element = document.getElementById(id)
+        const offset = element.offsetTop - 100
+        window.scrollTo({
+          top: offset,
           behavior: 'smooth',
         })
       }

@@ -21,13 +21,14 @@
         <div class="mt-[49px] text-[32px] font-normal text-[#666666]">
           Technologies I’ve been working with recently
         </div>
-        <div class="mt-[146px] flex flex-wrap w-full gap-x-[105px] gap-y-[67px]">
+        <div
+          class="mt-[146px] flex flex-wrap w-full gap-x-[105px] gap-y-[67px] items-center justify-center"
+        >
           <img src="../assets/JS.svg" />
           <img src="../assets/html5.svg" />
           <img src="../assets/React.svg" />
           <img src="../assets/CSS.svg" />
           <img src="../assets/tailwind.svg" />
-          <img src="../assets/CSS.svg" />
           <img src="../assets/CSS.svg" />
           <img src="../assets/CSS.svg" />
           <img src="../assets/CSS.svg" />
