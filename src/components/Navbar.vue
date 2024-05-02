@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 z-50 bg-white flex justify-center items-center">
+  <div class="sticky top-0 h-[100px] lg:h-full z-50 bg-white flex justify-center items-center">
     <div
       id="sidebar"
       ref="sidebar"
