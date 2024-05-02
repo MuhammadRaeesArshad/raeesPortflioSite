@@ -44,7 +44,7 @@
         </div>
       </div>
       <!-- Projects -->
-      <div class="mt-[100px] lg:mt-[192px] mb-[225px] text-center w-full">
+      <div class="mt-[100px] lg:mt-[192px] mb-[110px] lg:mb-[225px] text-center w-full">
         <div id="myProjects" class="font-bold text-[24px] lg:text-[48px] text-[#42446E]">
           Projects
         </div>
