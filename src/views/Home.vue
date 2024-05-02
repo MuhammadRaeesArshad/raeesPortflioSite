@@ -2,7 +2,14 @@
   <div class="flex justify-center items-center">
     <div class="w-full px-5 lg:px-[72px] max-w-[1440px]">
       <!-- Title Screen -->
-      <div class="mt-[80px] lg:mt-[165px] text-center lg:text-left lg:flex justify-between w-full">
+      <div
+        v-motion="'custom'"
+        :initial="{ opacity: 0, y: 100 }"
+        :variants="{ custom: { scale: 2 } }"
+        :visible="{ opacity: 1, y: 0, scale: 1 }"
+        :duration="1200"
+        class="mt-[80px] lg:mt-[165px] text-center lg:text-left lg:flex justify-between w-full"
+      >
         <div class="bg-[666666aa] font-bold text-[#42446E] text-[24px] lg:text-[58px]">
           <p>Hi 👋,</p>
           <p>My name is</p>
@@ -21,7 +28,15 @@
         </div>
       </div>
       <!-- My Tech Stack -->
-      <div class="mt-[110px] lg:mt-[370px] text-center">
+      <div id="myTechStack" class="mt-[110px] lg:mt-[370px]"></div>
+      <div
+        v-motion="'custom'"
+        :initial="{ opacity: 0, y: 100 }"
+        :variants="{ custom: { scale: 2 } }"
+        :visible="{ opacity: 1, y: 0, scale: 1 }"
+        :duration="1200"
+        class="text-center"
+      >
         <div id="myTechStack" class="font-bold text-[24px] lg:text-[48px] text-[#42446E]">
           My Tech Stack
         </div>
@@ -44,74 +59,85 @@
         </div>
       </div>
       <!-- Projects -->
-      <div class="mt-[100px] lg:mt-[192px] mb-[110px] lg:mb-[225px] text-center w-full">
-        <div id="myProjects" class="font-bold text-[24px] lg:text-[48px] text-[#42446E]">
-          Projects
-        </div>
-        <div class="mt-[8px] lg:mt-[49px] text-[14px] lg:text-[32px] font-normal text-[#666666]">
-          Things I’ve built so far
-        </div>
-
+      <div id="myProjects" class="mt-[100px] lg:mt-[192px] mb-[110px] lg:mb-[225px]">
         <div
-          class="mt-[32px] lg:mt-[96px] flex flex-wrap justify-center w-full gap-x-[45px] gap-y-[50px]"
+          v-motion="'custom'"
+          :initial="{ opacity: 0, y: 100 }"
+          :variants="{ custom: { scale: 2 } }"
+          :visible="{ opacity: 1, y: 0, scale: 1 }"
+          :duration="1200"
+          class="text-center w-full"
         >
-          <div v-for="project in projects" :key="project.title">
-            <div
-              class="w-[300px] h-[500px] lg:w-[373px] lg:h-[567px] bg-white drop-shadow-xl rounded-3xl"
-            >
-              <div class="h-[260px] bg-[#313131] flex items-center justify-center rounded-t-3xl">
-                <img src="../assets/ezWifiBlackAndWhiteLogo.svg" />
-              </div>
-              <div class="mx-[24.4px] lg:mx-[30px] text-left mt-[21.6px] lg:mt-[27px]">
-                <p class="font-medium text-[18px] lg:text-[28px] text-black">{{ project.title }}</p>
-                <p
-                  class="font-light text-[14px] lg:text-lg text-[#666666] mt-[13.6px] lg:mt-[17px]"
-                >
-                  {{ project.description }}
-                </p>
-                <p class="font-light text-[11px] lg:text-sm text-[#42446E] mt-[9.6px] lg:mt-[12px]">
-                  <span class="font-normal text-[12px] lg:text-base">Tech stack :</span
-                  >{{ project.techStack }}
-                </p>
-              </div>
+          <div class="font-bold text-[24px] lg:text-[48px] text-[#42446E]">Projects</div>
+          <div class="mt-[8px] lg:mt-[49px] text-[14px] lg:text-[32px] font-normal text-[#666666]">
+            Things I’ve built so far
+          </div>
+
+          <div
+            class="mt-[32px] lg:mt-[96px] flex flex-wrap justify-center w-full gap-x-[45px] gap-y-[50px]"
+          >
+            <div v-for="project in projects" :key="project.title">
               <div
-                v-if="project.previewLink || project.codeLink"
-                class="mx-[24.4px] lg:mx-[30px] mt-[18px] lg:mt-[21px] flex"
+                class="w-[300px] h-[500px] lg:w-[373px] lg:h-[567px] bg-white drop-shadow-xl rounded-3xl"
               >
-                <div
-                  v-if="project.previewLink"
-                  :onclick="
-                    () => {
-                      openLink(project.previewLink)
-                    }
-                  "
-                  class="flex cursor-pointer"
-                >
-                  <img
-                    class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px]"
-                    src="../assets/linkChain.svg"
-                  />
-                  <p class="ml-[10px] text-black font-normal text-[12px] lg:text-base underline">
-                    Live Preview
+                <div class="h-[260px] bg-[#313131] flex items-center justify-center rounded-t-3xl">
+                  <img src="../assets/ezWifiBlackAndWhiteLogo.svg" />
+                </div>
+                <div class="mx-[24.4px] lg:mx-[30px] text-left mt-[21.6px] lg:mt-[27px]">
+                  <p class="font-medium text-[18px] lg:text-[28px] text-black">
+                    {{ project.title }}
+                  </p>
+                  <p
+                    class="font-light text-[14px] lg:text-lg text-[#666666] mt-[13.6px] lg:mt-[17px]"
+                  >
+                    {{ project.description }}
+                  </p>
+                  <p
+                    class="font-light text-[11px] lg:text-sm text-[#42446E] mt-[9.6px] lg:mt-[12px]"
+                  >
+                    <span class="font-normal text-[12px] lg:text-base">Tech stack :</span
+                    >{{ project.techStack }}
                   </p>
                 </div>
                 <div
-                  v-if="project.codeLink"
-                  :onclick="
-                    () => {
-                      openLink(project.codeLink)
-                    }
-                  "
-                  :class="project.previewLink ? 'ml-[48px]' : ''"
-                  class="flex cursor-pointer"
+                  v-if="project.previewLink || project.codeLink"
+                  class="mx-[24.4px] lg:mx-[30px] mt-[18px] lg:mt-[21px] flex"
                 >
-                  <img
-                    class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px]"
-                    src="../assets/viewCodeIcon.svg"
-                  />
-                  <p class="ml-[10px] text-black font-normal text-[12px] lg:text-base underline">
-                    View Code
-                  </p>
+                  <div
+                    v-if="project.previewLink"
+                    :onclick="
+                      () => {
+                        openLink(project.previewLink)
+                      }
+                    "
+                    class="flex cursor-pointer"
+                  >
+                    <img
+                      class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px]"
+                      src="../assets/linkChain.svg"
+                    />
+                    <p class="ml-[10px] text-black font-normal text-[12px] lg:text-base underline">
+                      Live Preview
+                    </p>
+                  </div>
+                  <div
+                    v-if="project.codeLink"
+                    :onclick="
+                      () => {
+                        openLink(project.codeLink)
+                      }
+                    "
+                    :class="project.previewLink ? 'ml-[48px]' : ''"
+                    class="flex cursor-pointer"
+                  >
+                    <img
+                      class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px]"
+                      src="../assets/viewCodeIcon.svg"
+                    />
+                    <p class="ml-[10px] text-black font-normal text-[12px] lg:text-base underline">
+                      View Code
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -122,8 +148,13 @@
   </div>
 </template>
 <script>
+import { useMotions } from '@vueuse/motion'
+
 export default {
   name: 'Home',
+  // directives: {
+  //   motion: motion(),
+  // },
   setup() {
     return {
       projects: [
@@ -167,6 +198,7 @@ manager, account management system and ads manager system`,
       ],
     }
   },
+
   methods: {
     openLink(link) {
       window.open(link)

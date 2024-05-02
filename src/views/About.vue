@@ -1,6 +1,13 @@
 <template>
   <div class="flex justify-center items-center">
-    <div class="w-full px-5 lg:px-[72px] max-w-[1440px]">
+    <div
+      v-motion="'custom'"
+      :initial="{ opacity: 0, y: 100 }"
+      :variants="{ custom: { scale: 2 } }"
+      :visible="{ opacity: 1, y: 0, scale: 1 }"
+      :duration="1200"
+      class="w-full px-5 lg:px-[72px] max-w-[1440px]"
+    >
       <!-- About me -->
       <div class="text-left mt-[60px] lg:mt-[90px]">
         <p class="text-[#42446E] text-[24px] lg:text-[42px] font-bold">About Me</p>
