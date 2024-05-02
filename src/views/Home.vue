@@ -11,7 +11,7 @@
           >
             Muhammad Raees
           </p>
-          <p class="">Full Stack Developer</p>
+          <p class="">Web & App Developer</p>
         </div>
         <div class="mt-[40px] lg:mt-[0px] flex w-full lg:w-fit justify-center items-center">
           <img
