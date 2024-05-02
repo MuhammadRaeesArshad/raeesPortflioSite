@@ -5,9 +5,11 @@
       <div class="text-left mt-[90px]">
         <p class="text-[#42446E] text-[42px] font-bold">About Me</p>
         <div class="mt-[38px] text-[#666666] text-lg font-normal">
-          The Generator App is an online tool that helps you to export ready-made templates ready to
-          work as your future website. It helps you to combine slides, panels and other components
-          and export it as a set of static files: HTML/CSS/JS.
+          As a passionate and hardworking Full Stack Developer, I specialize in making high-quality
+          web and mobile applications. With my expertise in many JavaScript/Typescript frameworks, I
+          like tackling new and difficult challenges and achieving good result. My flexible and open
+          to learning mindset allows me to adapt quickly and embrace new technologies. I am
+          dedicated to continuous learning, always striving to expand my skill set.
         </div>
       </div>
       <div class="mt-[38px] mb-[192px]">
@@ -19,7 +21,7 @@
               <div
                 class="bg-[#D7FFE0] rounded-[100px] w-[84px] h-[24px] text-[#018C0F] font-semibold text-center text-[10px] items-center flex justify-center"
               >
-                Full Time
+                {{ expreince.status }}
               </div>
             </div>
             <div class="flex justify-between">
@@ -48,12 +50,12 @@ export default {
     return {
       expriences: [
         {
-          title: 'Junior Web Developer',
+          title: 'Full Stack Developer',
           company: 'ezWiFi',
           location: 'Islamabad',
           startDate: 'Mar 2023',
           endDate: 'Apr 2024',
-          fullTime: true,
+          status: 'Hybrid',
         },
         {
           title: 'Nodejs Developer',
@@ -61,7 +63,7 @@ export default {
           location: 'Islamabad',
           startDate: 'Dec 2021',
           endDate: 'Dec 2022',
-          fullTime: true,
+          status: 'Remote',
         },
       ],
     }

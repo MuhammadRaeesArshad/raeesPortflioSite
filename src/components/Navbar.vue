@@ -12,9 +12,13 @@
           <p class="cursor-pointer" :onclick="() => navigateTo('myProjects')">Projects</p>
           <p class="cursor-pointer" :onclick="() => navigateTo('contact')">Contact</p>
         </div>
-        <div class="ml-[62px] py-2 px-4 bg-[#42446E] text-[#FFFFFF] font-medium text-lg rounded-lg">
+        <a
+          href="../../public/Muhammad-Raees-Arshad.pdf"
+          download="raees"
+          class="cursor-pointer ml-[62px] py-2 px-4 bg-[#42446E] text-[#FFFFFF] font-medium text-lg rounded-lg"
+        >
           My Resume
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -22,7 +26,20 @@
 <script>
 export default {
   name: 'Navbar',
+
   methods: {
+    async downloadResume() {
+      const link = document.createElement('a')
+      const response = await fetch(
+        `https://drive.google.com/file/d/1gpHSrg6xFN2TkrLmEtBWCCdyWKMr9sRi/view?usp=sharing`,
+      )
+
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      link.href = url
+      link.download = 'raeesResume'
+      link.click()
+    },
     async navigateTo(id) {
       if (id === 'about') {
         if (!window.location.href.includes('about')) {
