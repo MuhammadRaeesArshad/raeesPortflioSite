@@ -48,14 +48,19 @@
         >
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/JS.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/html5.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/nodejs.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/nestjs.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/React.svg" />
-          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/vue.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/tailwind.svg" />
-          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
-          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
-          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
-          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
-          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/CSS.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/stripe.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/mongodb.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/express.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/aws.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/flutter.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/ts.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/mysql.svg" />
         </div>
       </div>
       <!-- Projects -->
