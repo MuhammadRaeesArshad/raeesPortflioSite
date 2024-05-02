@@ -3,15 +3,27 @@
   <div class="mx-[22px] lg:mx-[72px] flex justify-center items-center">
     <div id="contact" class="max-w-[1296px] w-full">
       <div class="flex justify-between items-center">
-        <p class="bg-[666666aa] font-bold text-[#42446E] text-[24px] lg:text-[32px]">MRA</p>
+        <p
+          :onclick="() => navigateTo('app')"
+          class="cursor-pointer bg-[666666aa] font-bold text-[#42446E] text-[24px] lg:text-[32px]"
+        >
+          MRA
+        </p>
         <div class="md:flex">
           <p class="hidden lg:block mr-[33px] text-[#42446E] text-lg font-normal">+923315989606</p>
-          <p class="hidden lg:block mr-[48px] text-[#42446E] text-lg font-normal">
+          <p
+            :onclick="mailTo"
+            class="cursor-pointer hidden lg:block mr-[48px] text-[#42446E] text-lg font-normal"
+          >
             mrasoftdev@gmail.com
           </p>
           <div class="flex justify-start items-center">
-            <img src="../assets/Github.svg" />
-            <img class="ml-[22px]" src="../assets/LinkedIn.svg" />
+            <img :onclick="toGithub" class="cursor-pointer" src="../assets/Github.svg" />
+            <img
+              :onclick="toLinkedIn"
+              class="cursor-pointer ml-[22px]"
+              src="../assets/LinkedIn.svg"
+            />
           </div>
         </div>
       </div>
@@ -54,6 +66,15 @@
 export default {
   name: 'Footer',
   methods: {
+    mailTo() {
+      window.open('mailto: mrasoftdev@gmail.com')
+    },
+    toGithub() {
+      window.open('https://github.com/MuhammadRaeesArshad')
+    },
+    toLinkedIn() {
+      window.open('https://www.linkedin.com/in/muhammad-raees-arshad-961871202/')
+    },
     async navigateTo(id) {
       if (id === 'about') {
         if (!window.location.href.includes('about')) {
