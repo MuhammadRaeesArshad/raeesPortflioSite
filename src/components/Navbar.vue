@@ -13,8 +13,7 @@
           <p class="cursor-pointer" :onclick="() => navigateTo('contact')">Contact</p>
         </div>
         <a
-          href="../../public/Muhammad-Raees-Arshad.pdf"
-          download="raees"
+          :onclick="downloadResume"
           class="cursor-pointer ml-[62px] py-2 px-4 bg-[#42446E] text-[#FFFFFF] font-medium text-lg rounded-lg"
         >
           My Resume
