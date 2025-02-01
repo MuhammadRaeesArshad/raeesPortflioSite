@@ -57,10 +57,12 @@
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/stripe.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/mongodb.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/express.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/azure.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/aws.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/flutter.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/ts.svg" />
           <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/mysql.svg" />
+          <img class="w-[80px] h-[80px] lg:w-[105px] lg:h-[105px]" src="../assets/psql.svg" />
         </div>
       </div>
       <!-- Projects -->
@@ -164,10 +166,23 @@ export default {
     return {
       projects: [
         {
+          title: 'AI Quanty',
+          description:
+            "Developed an app which lets you manage your company's documents and lets your team chat with them",
+          techStack: ' NestJS, NextJS, Tailwind',
+          previewLink: 'https://ai-quanty.com/',
+        },
+        {
           title: 'ezWiFi Landing Page',
           description: 'Crafted a dynamic, fully responsive and user-friendly landing page',
           techStack: ' VueJS, Tailwind',
           previewLink: 'https://ez-initiis-novis.vercel.app/',
+        },
+        {
+          title: 'Edtech LMS',
+          description:
+            'Developed LMS for 300+ schools and 5000+ students, ensuring seamless user experiences across web and offline platforms',
+          techStack: ' NestJS, VueJS, Tailwind',
         },
         {
           title: 'ezWiFi Mobile App',
@@ -193,12 +208,12 @@ manager, account management system and ads manager system`,
           techStack: ' Pug, NodeJS, ExpressJS',
           codeLink: 'https://github.com/MuhammadRaeesArshad/Natours---Tourism-webapp',
         },
-
         {
-          title: 'Tourism Webapp',
-          description: `Crafted a user interactive web app to allow users to view tours and book/manage their tours and accounts`,
+          title: 'Forkify',
+          description: `Crafted a user interactive web app to allow users to manage food recipes`,
           techStack: ' Pug, NodeJS, ExpressJS',
-          codeLink: 'https://github.com/MuhammadRaeesArshad/Natours---Tourism-webapp',
+          previewLink: 'https://forkify-mra.netlify.app/',
+          codeLink: 'https://github.com/MuhammadRaeesArshad/Forkify',
         },
       ],
     }
