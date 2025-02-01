@@ -99,7 +99,7 @@ export default {
     async downloadResume() {
       const link = document.createElement('a')
       const response = await fetch(
-        `https://drive.google.com/file/d/1gpHSrg6xFN2TkrLmEtBWCCdyWKMr9sRi/view?usp=sharing`,
+        `https://drive.google.com/file/d/1Aii957NTwlPIyu8QTShO7TgqTTx-6KgT/view?usp=sharing`,
       )
 
       const blob = await response.blob()
