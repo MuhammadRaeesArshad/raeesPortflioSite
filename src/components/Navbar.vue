@@ -1,140 +1,119 @@
 <template>
-  <!-- Glass Morphism Navbar with Enhanced Animations -->
+  <!-- Glass Morphism Navbar with Consistent Background -->
   <div
-    class="sticky top-0 h-[100px] lg:h-full z-50 backdrop-blur-lg bg-white/80 border-b border-white/20 shadow-lg flex justify-center items-center transition-all duration-300"
+    class="sticky top-0 h-[100px] lg:h-full z-50 bg-white border-b border-gray-200 shadow-lg flex justify-center items-center transition-all duration-300"
   >
-    <!-- Mobile Sidebar with Enhanced Animation -->
+    <!-- Mobile Sidebar with Better Styling -->
     <div
       id="sidebar"
       ref="sidebar"
-      v-motion="'sidebar'"
-      :initial="{ x: -300, opacity: 0 }"
-      :enter="sidebarOpen ? { x: 0, opacity: 1 } : { x: -300, opacity: 0 }"
-      class="lg:hidden flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-[253px] shrink-0 backdrop-blur-xl bg-white/90 border-r border-white/20 shadow-2xl transition-all duration-500 ease-out"
+      class="lg:hidden flex flex-col fixed z-40 top-0 h-screen overflow-y-scroll no-scrollbar w-[280px] shrink-0 bg-white border-r border-gray-100 shadow-2xl transition-all duration-500 ease-out"
+      :style="{ left: sidebarOpen ? '0px' : '-280px' }"
     >
-      <!-- Close button with Animation -->
-      <button
-        ref="trigger"
-        v-motion="'closeButton'"
-        :initial="{ rotate: 0, scale: 1 }"
-        :enter="{
-          rotate: sidebarOpen ? 180 : 0,
-          scale: sidebarOpen ? 1.1 : 1,
-          transition: { duration: 300 },
-        }"
-        class="lg:hidden text-slate-500 hover:text-slate-400 mt-[59px] fixed top-0 right-[23px] transition-all duration-300 hover:scale-110 hover:rotate-90"
-        @click.stop="closeSidebar"
-        aria-controls="sidebar"
-        :aria-expanded="sidebarOpen"
-      >
-        <img src="../assets/cross.svg" class="transition-transform duration-300" />
-      </button>
-
-      <div class="mt-3">
-        <div class="mt-[88px] mx-[22px] space-y-5 font-medium text-[14px] text-[#666666]">
-          <!-- Animated Menu Items -->
-          <div
-            v-for="(item, index) in menuItems"
-            :key="item.label"
-            v-motion="`menuItem${index}`"
-            :initial="{ opacity: 0, x: -30 }"
-            :enter="{
-              opacity: sidebarOpen ? 1 : 0,
-              x: sidebarOpen ? 0 : -30,
-              transition: { duration: 300, delay: index * 100 },
-            }"
-            class="group"
+      <!-- Sidebar Header with Close Button -->
+      <div class="px-6 py-6 border-b border-gray-100 flex items-center justify-between">
+        <div>
+          <h2
+            class="text-xl font-bold bg-gradient-to-r from-[#42446E] via-[#13B0F5] to-[#E70FAA] bg-clip-text text-transparent"
           >
-            <p
-              class="cursor-pointer transition-all duration-300 hover:text-[#13B0F5] hover:translate-x-2 hover:font-semibold relative"
-              :onclick="() => navigateTo(item.action)"
+            Muhammad Raees
+          </h2>
+          <p class="text-sm text-gray-600 mt-1">Full Stack Developer</p>
+        </div>
+
+        <!-- Close button inside header -->
+        <button
+          @click.stop="closeSidebar"
+          class="text-gray-700 hover:text-gray-900 transition-all duration-300 hover:scale-110 p-2 hover:bg-gray-100 rounded-full"
+          aria-controls="sidebar"
+          :aria-expanded="sidebarOpen"
+          aria-label="Close navigation menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="flex-1 px-6 py-6">
+        <nav class="space-y-3">
+          <!-- Menu Items -->
+          <div v-for="(item, index) in menuItems" :key="item.label">
+            <button
+              @click="navigateTo(item.action)"
+              class="w-full text-left px-4 py-3 text-[#42446E] hover:text-[#13B0F5] hover:bg-gray-50 rounded-lg transition-all duration-200 font-medium text-base group relative"
             >
-              {{ item.label }}
-              <!-- Hover underline effect -->
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] transition-all duration-300 group-hover:w-full"
-              ></span>
-            </p>
+              <span class="flex items-center">
+                <span class="mr-3 text-lg">{{ getItemIcon(item.action) }}</span>
+                {{ item.label }}
+              </span>
+              <!-- Hover indicator -->
+              <div
+                class="absolute left-0 top-0 bottom-0 w-1 bg-[#13B0F5] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              ></div>
+            </button>
           </div>
+        </nav>
 
-          <!-- Resume Button with Enhanced Animation -->
-          <div
-            v-motion="'resumeButtonMobile'"
-            :initial="{ opacity: 0, y: 20, scale: 0.8 }"
-            :enter="{
-              opacity: sidebarOpen ? 1 : 0,
-              y: sidebarOpen ? 0 : 20,
-              scale: sidebarOpen ? 1 : 0.8,
-              transition: { duration: 400, delay: 600 },
-            }"
-            :onclick="downloadResume"
-            class="w-fit flex items-center cursor-pointer py-[6px] px-3 bg-gradient-to-r from-[#42446E] to-[#13B0F5] hover:from-[#13B0F5] hover:to-[#E70FAA] text-[#FFFFFF] font-medium text-[14px] rounded-lg transition-all duration-500 hover:scale-105 hover:shadow-lg transform relative overflow-hidden group"
+        <!-- Resume Button -->
+        <div class="mt-8 pt-6 border-t border-gray-100">
+          <button
+            @click="downloadResume"
+            class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-[#42446E] to-[#13B0F5] hover:from-[#13B0F5] hover:to-[#E70FAA] text-white font-medium text-base rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            <!-- Shimmer effect -->
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-            ></div>
-            <span class="relative z-10">My Resume</span>
-          </div>
+            <span class="mr-2">📄</span>
+            Download Resume
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Backdrop with Blur -->
+    <!-- Backdrop with Better Styling -->
     <div
-      :onclick="closeSidebar"
-      v-motion="'backdrop'"
-      :initial="{ opacity: 0 }"
-      :enter="{
-        opacity: sidebarOpen ? 1 : 0,
-        transition: { duration: 300 },
-      }"
-      class="fixed lg:hidden inset-0 bg-slate-900/30 backdrop-blur-sm z-10 lg:hidden lg:z-auto transition-all duration-300"
-      :class="sidebarOpen ? 'pointer-events-auto' : 'pointer-events-none'"
+      @click="closeSidebar"
+      v-if="sidebarOpen"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 transition-opacity duration-300 lg:hidden"
       aria-hidden="true"
     ></div>
 
     <!-- Main Navbar Content -->
     <div
-      v-motion="'navbarContent'"
-      :initial="{ opacity: 0, y: -20 }"
-      :enter="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
       class="mx-5 lg:mx-[72px] mt-[30px] flex justify-between items-center my-[35px] max-w-[1296px] w-full"
     >
-      <!-- Logo with Animation -->
+      <!-- Logo with Simplified Animation -->
       <h1
-        v-motion="'logo'"
-        :initial="{ opacity: 0, scale: 0.5, rotate: -180 }"
-        :enter="{
-          opacity: 1,
-          scale: 1,
-          rotate: 0,
-          transition: {
-            duration: 1000,
-            type: 'spring',
-            stiffness: 200,
-          },
-        }"
-        :onclick="() => navigateTo('app')"
+        @click="goHome"
         class="cursor-pointer font-bold text-[32px] bg-gradient-to-r from-[#42446E] via-[#13B0F5] to-[#E70FAA] bg-clip-text text-transparent hover:scale-110 transition-all duration-300 relative group"
       >
         MRA
-        <!-- Glowing effect on hover -->
+        <!-- Simplified glowing effect on hover -->
         <div
           class="absolute inset-0 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"
         ></div>
       </h1>
 
       <!-- Mobile Menu Button -->
-      <div
-        v-motion="'hamburger'"
-        :initial="{ opacity: 0, rotate: 90 }"
-        :enter="{ opacity: 1, rotate: 0, transition: { duration: 600, delay: 400 } }"
-        :onclick="openSidebar"
-        class="lg:hidden cursor-pointer transition-all duration-300 hover:scale-110 hover:rotate-90"
+      <button
+        @click="openSidebar"
+        class="lg:hidden cursor-pointer transition-all duration-300 hover:scale-110 p-2 relative bg-transparent border-none hover:bg-gray-100 rounded-lg"
+        type="button"
+        aria-label="Open navigation menu"
       >
-        <img src="../assets/hamburger.svg" class="transition-transform duration-300" />
-      </div>
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex flex items-center">
@@ -142,32 +121,16 @@
         <div
           class="hidden lg:flex flex space-x-[59px] items-center font-medium text-lg text-[#666666]"
         >
-          <div
-            v-for="(item, index) in menuItems"
-            :key="item.label"
-            v-motion="`desktopMenuItem${index}`"
-            :initial="{ opacity: 0, y: -20 }"
-            :enter="{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 500, delay: 300 + index * 100 },
-            }"
-            class="group relative"
-          >
+          <div v-for="(item, index) in menuItems" :key="item.label" class="group relative">
             <p
               class="cursor-pointer transition-all duration-300 hover:text-[#13B0F5] hover:scale-105 relative"
-              :onclick="() => navigateTo(item.action)"
+              @click="navigateTo(item.action)"
             >
               {{ item.label }}
 
-              <!-- Animated underline -->
+              <!-- Simplified animated underline -->
               <span
                 class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] transition-all duration-300 group-hover:w-full"
-              ></span>
-
-              <!-- Hover glow effect -->
-              <span
-                class="absolute inset-0 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] opacity-0 group-hover:opacity-10 blur-lg transition-opacity duration-300 -z-10"
               ></span>
             </p>
           </div>
@@ -175,34 +138,10 @@
 
         <!-- Desktop Resume Button -->
         <div
-          v-motion="'resumeButtonDesktop'"
-          :initial="{ opacity: 0, scale: 0, rotate: 180 }"
-          :enter="{
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            transition: {
-              duration: 800,
-              delay: 800,
-              type: 'spring',
-              stiffness: 150,
-            },
-          }"
-          :onclick="downloadResume"
-          class="flex items-center cursor-pointer ml-[0px] lg:ml-[62px] py-[6px] px-3 lg:py-2 lg:px-4 bg-gradient-to-r from-[#42446E] to-[#13B0F5] hover:from-[#13B0F5] hover:to-[#E70FAA] text-[#FFFFFF] font-medium text-[14px] lg:text-lg rounded-lg transition-all duration-500 hover:scale-105 hover:shadow-xl transform relative overflow-hidden group"
+          @click="downloadResume"
+          class="flex items-center cursor-pointer ml-[0px] lg:ml-[62px] py-[6px] px-3 lg:py-2 lg:px-4 bg-gradient-to-r from-[#42446E] to-[#13B0F5] hover:from-[#13B0F5] hover:to-[#E70FAA] text-white font-medium text-[14px] lg:text-lg rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform"
         >
-          <!-- Animated background shine -->
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-          ></div>
-
-          <!-- Button text with animation -->
-          <span
-            v-motion="'resumeText'"
-            :initial="{ opacity: 0 }"
-            :enter="{ opacity: 1, transition: { duration: 300, delay: 1200 } }"
-            class="relative z-10 flex items-center"
-          >
+          <span class="flex items-center">
             <span class="mr-2">📄</span>
             My Resume
           </span>
@@ -229,26 +168,38 @@ export default {
   },
   methods: {
     async downloadResume() {
-      // Add loading animation here if needed
       try {
-        const link = document.createElement('a')
-        const response = await fetch(
-          `https://drive.google.com/file/d/1EYITyTMnNcV468KqDMeRd9paSr_BJOhy/view?usp=sharing`,
+        window.open(
+          'https://drive.google.com/file/d/1EYITyTMnNcV468KqDMeRd9paSr_BJOhy/view?usp=sharing',
+          '_blank',
         )
-
-        const blob = await response.blob()
-        const url = window.URL.createObjectURL(blob)
-        link.href = url
-        link.download = 'raeesResume'
-        link.click()
       } catch (error) {
-        console.error('Error downloading resume:', error)
+        console.error('Error opening resume:', error)
         // You could show a toast notification here
       }
     },
 
     async navigateTo(id) {
       this.closeSidebar()
+
+      // Special case for home/app
+      if (id === 'app') {
+        await this.$router.push('/')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        return
+      }
+
+      // Special case for contact - scroll to bottom
+      if (id === 'contact') {
+        await this.$router.push('/')
+        setTimeout(() => {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          })
+        }, 100)
+        return
+      }
 
       // If we're on the about page, go to home first
       if (window.location.href.includes('about')) {
@@ -278,6 +229,21 @@ export default {
       this.sidebarOpen = false
       // Re-enable body scroll
       document.body.style.overflow = 'auto'
+    },
+
+    goHome() {
+      this.navigateTo('app')
+    },
+
+    getItemIcon(action) {
+      const icons = {
+        app: '🏠',
+        about: '👨‍💻',
+        myTechStack: '⚡',
+        myProjects: '💼',
+        contact: '📞',
+      }
+      return icons[action] || '📄'
     },
   },
 
