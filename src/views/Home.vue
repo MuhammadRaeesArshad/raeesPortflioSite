@@ -1,30 +1,130 @@
 <template>
   <div class="flex justify-center items-center relative overflow-hidden bg-white min-h-screen">
-    <!-- Simplified Background Elements -->
+    <!-- Enhanced Background Elements for Home Section -->
     <div class="absolute inset-0 pointer-events-none">
-      <!-- Reduced Floating Circles -->
+      <!-- Enhanced Floating Circles with Animation -->
       <div
         v-motion="'floatingCircle1'"
-        :initial="{ opacity: 0 }"
-        :enter="{ opacity: 0.06, transition: { duration: 2000 } }"
+        :initial="{ opacity: 0, x: -50, rotate: 0 }"
+        :enter="{
+          opacity: 0.1,
+          x: 0,
+          rotate: 360,
+          transition: { duration: 8000, repeat: Infinity, repeatType: 'reverse' },
+        }"
         class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-full blur-xl"
       ></div>
       <div
         v-motion="'floatingCircle2'"
-        :initial="{ opacity: 0 }"
-        :enter="{ opacity: 0.04, transition: { duration: 2000 } }"
+        :initial="{ opacity: 0, x: 50, rotate: 0 }"
+        :enter="{
+          opacity: 0.08,
+          x: 0,
+          rotate: -360,
+          transition: { duration: 10000, repeat: Infinity, repeatType: 'reverse' },
+        }"
         class="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-r from-[#E70FAA] to-[#13B0F5] rounded-full blur-2xl"
       ></div>
 
-      <!-- Removed excessive floating particles - keeping only a few -->
+      <!-- Additional Background Circles for More Depth -->
       <div
-        v-for="i in 5"
+        v-motion="'floatingCircle3'"
+        :initial="{ opacity: 0, scale: 0.5, rotate: 0 }"
+        :enter="{
+          opacity: 0.06,
+          scale: 1,
+          rotate: 180,
+          transition: { duration: 15000, repeat: Infinity, repeatType: 'reverse' },
+        }"
+        class="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-[#13B0F5]/30 to-[#E70FAA]/30 rounded-full blur-3xl"
+      ></div>
+      <div
+        v-motion="'floatingCircle4'"
+        :initial="{ opacity: 0, scale: 0.8 }"
+        :enter="{
+          opacity: 0.04,
+          scale: 1.2,
+          transition: { duration: 12000, repeat: Infinity, repeatType: 'reverse' },
+        }"
+        class="absolute top-10 right-1/3 w-40 h-40 bg-gradient-to-r from-purple-400 to-[#13B0F5] rounded-full blur-2xl"
+      ></div>
+
+      <!-- Enhanced Floating Geometric Shapes -->
+      <div
+        v-motion="'floatingTriangle'"
+        :initial="{ opacity: 0, rotate: 0, y: 20 }"
+        :enter="{
+          opacity: 0.05,
+          rotate: 180,
+          y: -10,
+          transition: { duration: 12000, repeat: Infinity, repeatType: 'reverse' },
+        }"
+        class="absolute top-1/3 right-1/4 w-0 h-0 border-l-[40px] border-r-[40px] border-b-[70px] border-l-transparent border-r-transparent border-b-[#E70FAA]/20"
+      ></div>
+
+      <!-- Floating Rectangles for More Dynamic Background -->
+      <div
+        v-motion="'floatingRect1'"
+        :initial="{ opacity: 0, rotate: 0 }"
+        :enter="{
+          opacity: 0.03,
+          rotate: 45,
+          transition: { duration: 20000, repeat: Infinity, repeatType: 'reverse' },
+        }"
+        class="absolute bottom-1/3 left-1/3 w-16 h-24 bg-gradient-to-br from-[#13B0F5] to-transparent rounded-lg"
+      ></div>
+      <div
+        v-motion="'floatingRect2'"
+        :initial="{ opacity: 0, rotate: 45 }"
+        :enter="{
+          opacity: 0.04,
+          rotate: -45,
+          transition: { duration: 18000, repeat: Infinity, repeatType: 'reverse' },
+        }"
+        class="absolute top-2/3 right-1/2 w-20 h-12 bg-gradient-to-br from-[#E70FAA] to-transparent rounded-lg"
+      ></div>
+
+      <!-- Enhanced Floating Particles -->
+      <div
+        v-for="i in 12"
         :key="i"
-        class="absolute w-1 h-1 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-full opacity-20"
+        v-motion="`particle${i}`"
+        :initial="{ opacity: 0, y: Math.random() * 50, x: Math.random() * 50 }"
+        :enter="{
+          opacity: Math.random() * 0.15 + 0.05,
+          y: Math.random() * -30,
+          x: Math.random() * 30,
+          transition: {
+            duration: Math.random() * 6000 + 4000,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            delay: Math.random() * 2000,
+          },
+        }"
+        class="absolute w-1 h-1 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-full"
         :style="{
           top: Math.random() * 100 + '%',
           left: Math.random() * 100 + '%',
         }"
+      ></div>
+
+      <!-- Animated Grid Pattern -->
+      <div
+        v-motion="'gridPattern'"
+        :initial="{ opacity: 0 }"
+        :enter="{
+          opacity: 0.02,
+          transition: { duration: 3000 },
+        }"
+        class="absolute inset-0 bg-gradient-to-br from-transparent via-[#13B0F5]/5 to-transparent"
+        style="
+          background-image: radial-gradient(
+            circle at 20px 20px,
+            rgba(19, 176, 245, 0.1) 1px,
+            transparent 1px
+          );
+          background-size: 40px 40px;
+        "
       ></div>
     </div>
 
@@ -96,15 +196,57 @@
         <div
           class="mt-[40px] lg:mt-[0px] flex w-full lg:w-fit justify-center items-center relative"
         >
-          <!-- Simplified Profile Image -->
+          <!-- Simplified Profile Image with Sparkles -->
           <div
             v-motion="'profileContainer'"
             :initial="{ opacity: 0, scale: 0.8 }"
             :enter="{ opacity: 1, scale: 1, transition: { duration: 1000, delay: 1000 } }"
-            class="relative"
+            class="relative flex justify-center items-center"
           >
+            <!-- Simple Rotating Border -->
+            <div
+              v-motion="'profileBorder'"
+              :initial="{ opacity: 0, rotate: 0 }"
+              :enter="{
+                opacity: 0.8,
+                rotate: 360,
+                transition: { duration: 20000, repeat: Infinity, ease: 'linear' },
+              }"
+              class="absolute w-[270px] h-[270px] lg:w-[420px] lg:h-[420px] rounded-full"
+              style="
+                background: conic-gradient(from 0deg, #13b0f5, #e70faa, #8a2be2, #13b0f5);
+                padding: 3px;
+              "
+            >
+              <div class="w-full h-full bg-white rounded-full"></div>
+            </div>
+
+            <!-- Floating Sparkles around Profile -->
+            <div
+              v-for="i in 6"
+              :key="`sparkle${i}`"
+              v-motion="`profileSparkle${i}`"
+              :initial="{ opacity: 0, scale: 0 }"
+              :enter="{
+                opacity: [0, 1, 0],
+                scale: [0, 1.5, 0],
+                transition: {
+                  duration: 2000,
+                  repeat: Infinity,
+                  delay: i * 300,
+                  ease: 'easeInOut',
+                },
+              }"
+              class="absolute w-2 h-2 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-full"
+              :style="{
+                top: 50 + 40 * Math.cos((i * 60 * Math.PI) / 180) + '%',
+                left: 50 + 40 * Math.sin((i * 60 * Math.PI) / 180) + '%',
+                transform: 'translate(-50%, -50%)',
+              }"
+            ></div>
+
             <img
-              class="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative z-10 rounded-full border-4 border-white shadow-2xl hover:scale-105 transition-transform duration-300"
+              class="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative z-10 rounded-full border-4 border-white shadow-2xl hover:scale-105 transition-all duration-500"
               :src="ProfileImage"
             />
           </div>
@@ -334,7 +476,7 @@
         </div>
       </div>
 
-      <!-- My Tech Stack with Simplified Animations -->
+      <!-- My Tech Stack with Enhanced Background -->
       <div id="myTechStack" class="mt-[110px] lg:mt-[370px]"></div>
       <div
         v-motion="'techStackSection'"
@@ -342,6 +484,141 @@
         :visible="{ opacity: 1, transition: { duration: 800 } }"
         class="text-center relative"
       >
+        <!-- Enhanced Animated Background for Tech Stack -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+          <!-- Large Background Circles -->
+          <div
+            v-motion="'techBgCircle1'"
+            :initial="{ opacity: 0, scale: 0.5, rotate: 0 }"
+            :visible="{
+              opacity: 0.08,
+              scale: 1,
+              rotate: 360,
+              transition: { duration: 25000, repeat: Infinity, ease: 'linear' },
+            }"
+            class="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-full blur-3xl"
+          ></div>
+          <div
+            v-motion="'techBgCircle2'"
+            :initial="{ opacity: 0, scale: 0.8, rotate: 0 }"
+            :visible="{
+              opacity: 0.06,
+              scale: 1.2,
+              rotate: -360,
+              transition: { duration: 30000, repeat: Infinity, ease: 'linear' },
+            }"
+            class="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-r from-[#E70FAA] to-purple-500 rounded-full blur-3xl"
+          ></div>
+
+          <!-- Medium Background Elements -->
+          <div
+            v-motion="'techBgCircle3'"
+            :initial="{ opacity: 0, y: 50 }"
+            :visible="{
+              opacity: 0.05,
+              y: -20,
+              transition: { duration: 15000, repeat: Infinity, repeatType: 'reverse' },
+            }"
+            class="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400 to-[#13B0F5] rounded-full blur-2xl"
+          ></div>
+          <div
+            v-motion="'techBgCircle4'"
+            :initial="{ opacity: 0, x: -50 }"
+            :visible="{
+              opacity: 0.04,
+              x: 20,
+              transition: { duration: 12000, repeat: Infinity, repeatType: 'reverse' },
+            }"
+            class="absolute bottom-1/3 right-1/3 w-48 h-48 bg-gradient-to-r from-[#E70FAA] to-pink-400 rounded-full blur-2xl"
+          ></div>
+
+          <!-- Animated Geometric Shapes for Tech Section -->
+          <div
+            v-motion="'techTriangle1'"
+            :initial="{ opacity: 0, rotate: 0 }"
+            :visible="{
+              opacity: 0.03,
+              rotate: 120,
+              transition: { duration: 20000, repeat: Infinity, ease: 'linear' },
+            }"
+            class="absolute top-20 right-20 w-0 h-0 border-l-[60px] border-r-[60px] border-b-[100px] border-l-transparent border-r-transparent border-b-[#13B0F5]/20"
+          ></div>
+          <div
+            v-motion="'techTriangle2'"
+            :initial="{ opacity: 0, rotate: 60 }"
+            :visible="{
+              opacity: 0.04,
+              rotate: -60,
+              transition: { duration: 16000, repeat: Infinity, ease: 'linear' },
+            }"
+            class="absolute bottom-32 left-16 w-0 h-0 border-l-[40px] border-r-[40px] border-b-[70px] border-l-transparent border-r-transparent border-b-[#E70FAA]/25"
+          ></div>
+
+          <!-- Floating Rectangles for Tech Section -->
+          <div
+            v-motion="'techRect1'"
+            :initial="{ opacity: 0, rotate: 0 }"
+            :visible="{
+              opacity: 0.04,
+              rotate: 45,
+              transition: { duration: 18000, repeat: Infinity, repeatType: 'reverse' },
+            }"
+            class="absolute top-1/3 left-1/5 w-24 h-32 bg-gradient-to-br from-[#13B0F5]/30 to-transparent rounded-xl"
+          ></div>
+          <div
+            v-motion="'techRect2'"
+            :initial="{ opacity: 0, rotate: -30 }"
+            :visible="{
+              opacity: 0.03,
+              rotate: 30,
+              transition: { duration: 22000, repeat: Infinity, repeatType: 'reverse' },
+            }"
+            class="absolute bottom-1/4 right-1/5 w-20 h-28 bg-gradient-to-br from-[#E70FAA]/30 to-transparent rounded-xl"
+          ></div>
+
+          <!-- Tech Stack Specific Particles -->
+          <div
+            v-for="i in 15"
+            :key="`techParticle${i}`"
+            v-motion="`techParticle${i}`"
+            :initial="{ opacity: 0, scale: 0 }"
+            :visible="{
+              opacity: Math.random() * 0.1 + 0.05,
+              scale: Math.random() * 0.8 + 0.5,
+              transition: {
+                duration: Math.random() * 8000 + 6000,
+                repeat: Infinity,
+                repeatType: 'reverse',
+                delay: Math.random() * 3000,
+              },
+            }"
+            class="absolute w-2 h-2 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-full"
+            :style="{
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+            }"
+          ></div>
+
+          <!-- Animated Background Pattern -->
+          <div
+            v-motion="'techGridPattern'"
+            :initial="{ opacity: 0 }"
+            :visible="{
+              opacity: 0.03,
+              transition: { duration: 2000 },
+            }"
+            class="absolute inset-0 bg-gradient-to-br from-transparent via-[#E70FAA]/5 to-transparent"
+            style="
+              background-image: radial-gradient(
+                circle at 30px 30px,
+                rgba(231, 15, 170, 0.1) 1px,
+                transparent 1px
+              );
+              background-size: 60px 60px;
+            "
+          ></div>
+        </div>
+
         <div class="relative z-10">
           <div
             v-motion="'techStackTitle'"
@@ -350,7 +627,7 @@
             class="font-bold text-[24px] lg:text-[48px] text-[#42446E] relative"
           >
             My Tech Stack
-            <!-- Simplified Decorative Elements -->
+            <!-- Enhanced Decorative Elements -->
             <span class="absolute -left-12 top-0 text-3xl opacity-60">⚡</span>
             <span class="absolute -right-12 top-0 text-3xl opacity-60">🚀</span>
           </div>
@@ -381,9 +658,9 @@
                 :alt="tech.name"
               />
 
-              <!-- Tech Name Tooltip -->
+              <!-- Simple Tech Name Tooltip -->
               <div
-                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[#42446E] text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[#42446E] text-white px-3 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20"
               >
                 {{ tech.name }}
               </div>
@@ -392,7 +669,7 @@
         </div>
       </div>
 
-      <!-- Projects Section with Simplified Animations -->
+      <!-- Projects Section with Enhanced Animations -->
       <div id="myProjects" class="mt-[100px] lg:mt-[192px] mb-[110px] lg:mb-[225px]">
         <div
           v-motion="'projectsSection'"
@@ -400,6 +677,18 @@
           :visible="{ opacity: 1, transition: { duration: 800 } }"
           class="text-center w-full relative"
         >
+          <!-- Animated Background Pattern -->
+          <div
+            v-motion="'projectsBg'"
+            :initial="{ opacity: 0, rotate: 0 }"
+            :visible="{
+              opacity: 0.02,
+              rotate: 5,
+              transition: { duration: 3000 },
+            }"
+            class="absolute inset-0 bg-gradient-to-br from-[#13B0F5] via-transparent to-[#E70FAA] rounded-3xl"
+          ></div>
+
           <div class="relative z-10">
             <div
               v-motion="'projectsTitle'"
@@ -408,9 +697,29 @@
               class="font-bold text-[24px] lg:text-[48px] text-[#42446E] relative"
             >
               Projects
-              <!-- Simplified Decorative Code Icons -->
-              <span class="absolute -left-16 -top-2 text-4xl opacity-60">💻</span>
-              <span class="absolute -right-16 -top-2 text-4xl opacity-60">🎨</span>
+              <!-- Enhanced Decorative Code Icons -->
+              <span
+                v-motion="'codeIcon1'"
+                :initial="{ opacity: 0, scale: 0 }"
+                :visible="{
+                  opacity: 0.7,
+                  scale: [0, 1.1, 1],
+                  transition: { duration: 1000, delay: 600 },
+                }"
+                class="absolute -left-16 -top-2 text-4xl"
+                >💻</span
+              >
+              <span
+                v-motion="'codeIcon2'"
+                :initial="{ opacity: 0, scale: 0 }"
+                :visible="{
+                  opacity: 0.7,
+                  scale: [0, 1.1, 1],
+                  transition: { duration: 1000, delay: 800 },
+                }"
+                class="absolute -right-16 -top-2 text-4xl"
+                >🎨</span
+              >
             </div>
             <div
               v-motion="'projectsSubtitle'"
@@ -428,24 +737,64 @@
                 v-for="(project, index) in projects"
                 :key="project.title"
                 v-motion="`project${index}`"
-                :initial="{ opacity: 0, y: 50 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: index * 100 } }"
-                class="group"
+                :initial="{ opacity: 0, y: 50, rotateY: index % 2 === 0 ? -20 : 20 }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  rotateY: 0,
+                  transition: { duration: 800, delay: index * 100 },
+                }"
+                class="group perspective-1000"
               >
                 <div
-                  class="w-[300px] h-[500px] lg:w-[373px] lg:h-[567px] bg-white drop-shadow-xl rounded-3xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl relative overflow-hidden"
+                  class="w-[300px] h-[500px] lg:w-[373px] lg:h-[567px] bg-white drop-shadow-xl rounded-3xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl relative overflow-hidden transform-style-preserve-3d"
                 >
-                  <!-- Simplified Hover Effect -->
+                  <!-- Enhanced Hover Effect -->
                   <div
-                    class="absolute inset-0 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl"
+                    class="absolute inset-0 bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] opacity-0 group-hover:opacity-8 transition-opacity duration-500 rounded-3xl"
+                  ></div>
+
+                  <!-- Shimmer Effect -->
+                  <div
+                    v-motion="`shimmer${index}`"
+                    :initial="{ x: '-100%' }"
+                    :visible="{
+                      x: '100%',
+                      transition: {
+                        duration: 2000,
+                        delay: index * 200 + 1000,
+                        ease: 'easeInOut',
+                      },
+                    }"
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   ></div>
 
                   <div
                     class="h-[260px] bg-gradient-to-br from-[#313131] via-[#42446E] to-[#313131] flex items-center justify-center rounded-t-3xl relative overflow-hidden"
                   >
+                    <!-- Rotating Background Pattern -->
+                    <div
+                      v-motion="`projectBg${index}`"
+                      :initial="{ rotate: 0, scale: 1 }"
+                      :visible="{
+                        rotate: 360,
+                        scale: [1, 1.05, 1],
+                        transition: {
+                          duration: 15000,
+                          repeat: Infinity,
+                          ease: 'linear',
+                        },
+                      }"
+                      class="absolute inset-0 opacity-10"
+                    >
+                      <div
+                        class="w-full h-full bg-gradient-to-r from-[#13B0F5] to-[#E70FAA] rounded-t-3xl"
+                      ></div>
+                    </div>
+
                     <img
                       :src="ProjectLogo"
-                      class="relative z-10 transition-transform duration-500 group-hover:scale-110"
+                      class="relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
                     />
                   </div>
                   <div
@@ -478,7 +827,7 @@
                       class="flex cursor-pointer group/link transition-all duration-300 hover:scale-105"
                     >
                       <img
-                        class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px] transition-transform duration-300"
+                        class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px] transition-transform duration-300 group-hover/link:rotate-12"
                         src="../assets/linkChain.svg"
                       />
                       <p
@@ -494,7 +843,7 @@
                       class="flex cursor-pointer group/link transition-all duration-300 hover:scale-105"
                     >
                       <img
-                        class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px] transition-transform duration-300"
+                        class="w-[16.5px] h-[16.5px] lg:w-[20px] lg:h-[20px] transition-transform duration-300 group-hover/link:rotate-12"
                         src="../assets/viewCodeIcon.svg"
                       />
                       <p
@@ -653,6 +1002,67 @@ export default {
 </script>
 
 <style scoped>
+/* Enhanced animations for better visual appeal */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Enhanced conic gradient */
+.bg-conic-gradient {
+  background: conic-gradient(from 0deg, #13b0f5, #e70faa, #8a2be2, #13b0f5);
+}
+
+/* Profile image enhancements */
+.profile-border {
+  background: conic-gradient(from 0deg, #13b0f5, #e70faa, #8a2be2, #13b0f5);
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.profile-border::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: white;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Tech icon hexagon shape */
+.hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Enhanced border gradient */
+.border-gradient {
+  border: 2px solid;
+  border-image: conic-gradient(from 0deg, #13b0f5, #e70faa, #13b0f5) 1;
+  border-radius: 50%;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -681,6 +1091,14 @@ html {
   transform: scale(1.1);
 }
 
+.group:hover .group-hover\:rotate-6 {
+  transform: rotate(6deg);
+}
+
+.group:hover .group-hover\:rotate-12 {
+  transform: rotate(12deg);
+}
+
 /* Loading animation for images */
 img {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -688,5 +1106,49 @@ img {
 
 img:hover {
   transform: translateY(-2px);
+}
+
+/* Project card 3D effects */
+.group:hover .transform-style-preserve-3d {
+  transform: rotateY(5deg) rotateX(2deg);
+}
+
+/* Enhanced glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(19, 176, 245, 0.3);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(231, 15, 170, 0.3);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(19, 176, 245, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(231, 15, 170, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 </style>
