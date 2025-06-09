@@ -311,29 +311,20 @@ export default {
       window.open('https://www.linkedin.com/in/muhammad-raees-arshad-961871202/', '_blank', 'noopener,noreferrer')
     },
     async navigateTo(id) {
-      if (id === 'about') {
-        if (!window.location.href.includes('about')) {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          })
-          await this.$router.push('/about')
-        }
-      } else {
-        if (window.location.href.includes('about')) {
-          await this.$router.push('/')
-        }
-        
-        // Wait a bit for route change
-        setTimeout(() => {
-          const element = document.getElementById(id)
-          if (element) {
-            element.scrollIntoView({
-              behavior: 'smooth',
-            })
-          }
-        }, 100)
+      // If we're on the about page, go to home first
+      if (window.location.href.includes('about')) {
+        await this.$router.push('/')
       }
+      
+      // Wait a bit for route change, then scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+          })
+        }
+      }, 100)
     },
   },
 }

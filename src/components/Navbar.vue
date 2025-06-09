@@ -250,31 +250,22 @@ export default {
     async navigateTo(id) {
       this.closeSidebar()
 
-      if (id === 'about') {
-        if (!window.location.href.includes('about')) {
+      // If we're on the about page, go to home first
+      if (window.location.href.includes('about')) {
+        await this.$router.push('/')
+      }
+
+      // Wait a bit for route change, then scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          const offset = element.offsetTop - 100
           window.scrollTo({
-            top: 0,
+            top: offset,
             behavior: 'smooth',
           })
-          await this.$router.push('/about')
         }
-      } else {
-        if (window.location.href.includes('about')) {
-          await this.$router.push('/')
-        }
-
-        // Wait a bit for route change
-        setTimeout(() => {
-          const element = document.getElementById(id)
-          if (element) {
-            const offset = element.offsetTop - 100
-            window.scrollTo({
-              top: offset,
-              behavior: 'smooth',
-            })
-          }
-        }, 100)
-      }
+      }, 100)
     },
 
     openSidebar() {
