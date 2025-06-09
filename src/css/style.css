@@ -2,8 +2,332 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced base styles */
 body {
- 
   background: rgba(255, 255, 255, 1);
- }
+  overflow-x: hidden;
+}
 
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar design */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f1f1f1 0%, #e8e8e8 100%);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #13b0f5 0%, #e70faa 100%);
+  border-radius: 6px;
+  border: 2px solid #f1f1f1;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e70faa 0%, #13b0f5 100%);
+  transform: scale(1.1);
+}
+
+/* Selection styling */
+::selection {
+  background: linear-gradient(45deg, #13b0f5, #e70faa);
+  color: white;
+}
+
+::-moz-selection {
+  background: linear-gradient(45deg, #13b0f5, #e70faa);
+  color: white;
+}
+
+/* Enhanced focus styles for accessibility */
+*:focus {
+  outline: 2px solid #13b0f5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Global animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Utility classes */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Glass morphism utilities */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-strong {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced gradient text */
+.gradient-text {
+  background: linear-gradient(45deg, #13b0f5, #e70faa);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+/* Enhanced button styles */
+.btn-gradient {
+  background: linear-gradient(45deg, #42446e, #13b0f5);
+  background-size: 200% 200%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(45deg, #13b0f5, #e70faa);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(19, 176, 245, 0.3);
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+/* Custom container */
+.container-custom {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 72px;
+  }
+}
+
+/* Loading animation */
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #13b0f5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive typography */
+.text-responsive-xl {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.text-responsive-md {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.text-responsive-sm {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+/* Enhanced shadows */
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(19, 176, 245, 0.3);
+}
+
+.shadow-glow-pink {
+  box-shadow: 0 0 20px rgba(231, 15, 170, 0.3);
+}
+
+.shadow-glow-purple {
+  box-shadow: 0 0 20px rgba(66, 68, 110, 0.3);
+}
+
+/* Improved accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Dark mode support (for future enhancement) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: rgba(18, 18, 18, 1);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  }
+}
+
+/* Performance optimizations */
+* {
+  will-change: auto;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
