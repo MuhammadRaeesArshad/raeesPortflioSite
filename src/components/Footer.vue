@@ -1,21 +1,21 @@
 <template lang="">
-  <!-- Simplified Footer with Faster Animations -->
-  <div class="relative overflow-hidden">
+  <!-- Simplified Footer with Mobile-Friendly Background -->
+  <div class="relative overflow-hidden bg-white">
     <!-- Simplified Background -->
     <div class="absolute inset-0 pointer-events-none">
-      <!-- Simple Gradient Overlay -->
+      <!-- Simple Gradient Overlay - Only on larger screens -->
       <div 
         v-motion="'footerBg'"
         :initial="{ opacity: 0 }"
         :visible="{ opacity: 0.03, transition: { duration: 1000 } }"
-        class="absolute inset-0 bg-gradient-to-tr from-[#13B0F5]/10 via-transparent to-[#E70FAA]/10"
+        class="absolute inset-0 bg-gradient-to-tr from-[#13B0F5]/10 via-transparent to-[#E70FAA]/10 hidden lg:block"
       ></div>
       
-      <!-- Reduced Floating Particles -->
+      <!-- Reduced Floating Particles - Only on larger screens -->
       <div 
         v-for="i in 3" 
         :key="i"
-        class="absolute text-[#42446E] text-lg opacity-10"
+        class="absolute text-[#42446E] text-lg opacity-10 hidden lg:block"
         :style="{ 
           top: Math.random() * 80 + '%', 
           left: Math.random() * 90 + '%' 

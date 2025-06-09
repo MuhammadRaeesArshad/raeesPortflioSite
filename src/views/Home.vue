@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center relative overflow-hidden">
+  <div class="flex justify-center items-center relative overflow-hidden bg-white min-h-screen">
     <!-- Simplified Background Elements -->
     <div class="absolute inset-0 pointer-events-none">
       <!-- Reduced Floating Circles -->

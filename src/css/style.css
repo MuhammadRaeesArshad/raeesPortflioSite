@@ -3,9 +3,21 @@
 @tailwind utilities;
 
 /* Enhanced base styles */
+html {
+  background: #ffffff;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: rgba(255, 255, 255, 1);
+  background: #ffffff;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  background: #ffffff;
+  min-height: 100vh;
 }
 
 /* Smooth scrolling for the entire page */
